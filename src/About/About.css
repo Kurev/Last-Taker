@@ -1,0 +1,149 @@
+.About {
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: rgb(5, 5, 5);
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.lastTaker, .step {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 20px 0;
+}
+
+.lastTaker img, .step img {
+    width: 100%;
+    max-width: 500px;
+    height: auto;
+    margin: -50px 0 -90px 0;
+    margin-top: -90px;
+}
+
+.lastTaker{
+    animation: bounceInDown;
+    animation-duration: 2.5s;
+}
+
+.step1{
+    animation: bounceInUp;
+    animation-duration: 1.5s;
+}
+
+
+.step2{
+    animation: bounceInRight;
+    animation-duration: 1.8s;
+}
+
+.step3{
+    animation: rubberBand;
+    animation-duration: 1.5s;
+}
+
+.back{
+    animation: backInUp;
+    animation-duration: 1s;
+}
+
+.lastTaker h4, .step h4 {
+    border: 2px solid rgb(195, 39, 243);
+    border-radius: 10px;
+    width: 80%;
+    max-width: 500px;
+    padding: 25px;
+    font-weight: 400;
+    box-shadow: 0px 0px 114px 3px rgba(227, 46, 255, 0.4);
+    color: white;
+    font-family: "Pixelify Sans", sans-serif;
+    text-align: center;
+}
+
+.step1 h4 {
+    border-color: rgb(0, 253, 236);
+    box-shadow: 0px 0px 114px 3px rgba(46, 255, 255, 0.307);
+}
+
+.step2 h4 {
+    border-color: rgb(253, 0, 169);
+    box-shadow: 0px 0px 114px 3px rgba(255, 46, 178, 0.307);
+}
+
+.step3 h4 {
+    border-color: rgb(253, 253, 0);
+    box-shadow: 0px 0px 114px 3px rgba(255, 245, 46, 0.307);
+}
+
+.fun {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 50px 0;
+}
+
+.fun h3{
+    color: white;
+    text-align: center;
+}
+
+
+@media screen and (max-width: 900px) {
+    .lastTaker h4, .step h4 {
+        width: 80%;
+        font-size: 18px;
+    }
+
+    .lastTaker img{
+        margin-top: -90px;
+    }
+}
+
+@media screen and (max-width: 800px) {
+    .lastTaker h4, .step h4 {
+        width: 80%;
+        font-size: 16px;
+    }
+
+    .lastTaker img{
+        margin-top: -90px;
+    }
+}
+
+@media screen and (max-width: 700px) {
+    .lastTaker h4, .step h4 {
+        width: 90%;
+        font-size: 18px;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .lastTaker h4, .step h4 {
+        width: 90%;
+        font-size: 15px;
+    }
+
+    .lastTaker img{
+        margin-top: -90px;
+    }
+
+    img {
+        margin-bottom: -90px;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .lastTaker img {
+        margin-top: -60px;
+    }
+
+    .step img, .lastTaker img {
+        margin-bottom: -70px;
+    }
+}

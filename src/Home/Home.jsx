@@ -21,7 +21,7 @@ const Home = () => {
           
         </div>
 
-        <h2><LuGamepad2 /></h2>
+        <Link to='About'><h2><LuGamepad2 /></h2></Link>
         <div className="icons">
           <a href=""><MdFacebook /></a>
           <a href=""><FaDiscord /></a>
