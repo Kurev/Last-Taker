@@ -29,7 +29,7 @@ const Home = () => {
           <a href=""><AiFillTikTok /></a>
         </div>
         <div className="created">
-          <p>Creater by: ChatackflowYt</p>
+          <p>Creater by: Kurev</p>
         </div>
       </div>
       
