@@ -1,0 +1,272 @@
+.playerAi-container {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    background: rgb(5, 5, 5);
+}
+  
+.ai-box {
+    background: black;
+    border: 2px solid rgb(195, 39, 243);
+    margin-bottom: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    height: 30rem;
+    -webkit-box-shadow: 0px 0px 114px 3px rgba(227, 46, 255, 0.4);
+    -moz-box-shadow: 0px 0px 114px 3px rgba(227, 46, 255, 0.4);
+    box-shadow: 0px 0px 114px 3px rgba(227, 46, 255, 0.4);
+    animation: backInLeft;
+    animation-duration: 2.5s;
+}
+  
+.Ailogo {
+    height: auto;
+    width: 300px;
+    margin-top: -80px;
+    margin-bottom: 15px;
+}
+  
+.box {
+    border-radius: 10px;
+    background: rgb(170, 0, 255);
+    width: 40px;
+    height: 35px;
+    margin-bottom: 17px;
+    cursor: pointer;
+}
+
+.box:hover{
+    background: rgb(31, 30, 31);
+    transition: 0.5s;
+}
+
+.boxes {
+    margin-top: -20px;
+    display: flex;
+    flex-direction: row;
+    gap: 30px;
+    min-height: 365px; /* Set a minimum height to prevent layout shift */
+}
+  
+.grab {
+    width: 100%; /* Ensure the grab button container takes the full width */
+    display: flex;
+    justify-content: center; /* Center the grab button */
+    position: relative; /* Position relative to place grab button at the bottom */
+}
+
+.grab button {
+    outline: 0;
+    border: 0;
+    width: 300px;
+    height: 30px;
+    border-radius: 0px 0px 10px 10px;
+    font-size: 25px;
+    backdrop-filter: blur(20px);
+    background: rgb(160, 94, 252);
+    background: linear-gradient(90deg, rgba(160, 94, 252, 0.9725140056022409) 0%, rgba(254, 53, 196, 1) 100%, rgba(201, 99, 232, 1) 100%);
+    font-family: "Lucida Console", Monaco, monospace;
+    color: white;
+}
+  
+.t {
+    background-color: #ff0077;
+}
+
+.t:hover{
+    box-shadow: 0px 0px 6px 7px rgba(252,0,105,1);
+}
+  
+.l {
+    background-color: #da01f3;
+}
+
+.l:hover {
+    box-shadow: 0px 0px 6px 7px #da01f3;
+}
+  
+.tl {
+    background-color: #f3d701;
+}
+
+.tl:hover {
+    box-shadow: 0px 0px 6px 7px #f3d701;
+}
+
+.n:hover{
+    box-shadow: 0px 0px 6px 7px rgb(170, 0, 255);
+}
+  
+.clicked {
+    background-color: grey; /* Style for clicked boxes */
+}
+  
+p {
+    color: white;
+}
+
+.details{
+    height: 300px;
+    margin: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center ;
+    width: 200px;
+    border-radius: 15px;
+}
+
+.score{
+    animation: backInUp;
+    animation-duration: 1.8s;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    height: 200px;
+    /* margin: 30px; */
+    border: 1px dotted rgb(242, 0, 255);
+    width: 190px;
+    background-color: black;
+    border-radius: 15px;
+    margin-bottom: 50px;
+}
+
+.score p{
+    font-size: 14px;
+    margin-top: 10px;
+    margin-left: 10px;
+    margin-bottom: 10px;
+    font-family: "Lucida Console", Monaco, monospace;
+    color: aqua;
+}
+
+.turn{
+    animation: backInRight;
+    animation-duration: 2s;
+    height: 200px;
+    /* margin: 30px; */
+    border: 1px dotted rgb(242, 0, 255);
+    width: 190px;
+    background-color: black;
+    border-radius: 15px;
+    margin-bottom: 30px;
+}
+
+.player{
+    color: #ff0077;
+    font-weight: 700;
+    font-family:Arial, Helvetica, sans-serif;
+}
+
+.turn p{
+    font-size: 15px;
+    margin: 10px 0px 30px 16px;
+    font-family: "Lucida Console", Monaco, monospace;
+}
+
+.your{
+    color: #da01f3;
+}
+
+.ai{
+    color:#f3d701;
+}
+
+.btn{
+    display: flex;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.btn button{
+    animation: backInDown;
+    animation-duration: 1.5s;
+    outline: 0;
+    border: 1px solid rgb(250, 94, 240);
+    width: 65px;
+    height: 25px;
+    border-radius: 10px;
+    font-size: 20px;
+    color:#ff0077;
+    background: black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn button:hover{
+    background: rgb(250, 94, 240);
+    transition: 0.5s;
+}
+
+@media screen and (max-width: 700px) {
+    .playerAi-container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+    }
+
+    .ai-box {
+        background: black;
+        border: 2px solid rgb(195, 39, 243);
+        margin-top: 30px;
+        margin-bottom: 5px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 25rem;
+    }
+
+    .score, .turn{
+        margin-bottom: 25px;
+    }
+    
+
+    .details{
+        height: 300px;
+        margin: 20px;
+        display: flex;
+        flex-direction: column;
+        align-items: center ;
+        width: 200px;
+        border-radius: 15px;
+    }
+
+    .Ailogo {
+        height: auto;
+        width: 300px;
+        margin-top: -77px;
+    }
+      
+    .box{
+        border-radius: 10px;
+        width: 35px;
+        height: 28px;
+        margin-bottom: 13px;
+        cursor: pointer;
+    }
+
+    .boxes {
+        margin-top: -40px;
+        display: flex;
+        flex-direction: row;
+        gap: 30px;
+        min-height: 365px; /* Set a minimum height to prevent layout shift */
+    }
+
+    .grab {
+        width: 100%; /* Ensure the grab button container takes the full width */
+        display: flex;
+        justify-content: center; /* Center the grab button */
+        position: relative; /* Position relative to place grab button at the bottom */
+        margin-top: -57px;
+        
+    }
+}
+  
