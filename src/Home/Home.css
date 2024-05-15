@@ -93,6 +93,13 @@ button:hover{
     box-shadow: 0px 0px 17px 4px rgb(107, 5, 122);
 }
 
+.about:hover{
+    border-radius: 50%;
+    transition: .5s;
+    color: rgb(247, 0, 255);
+    filter: drop-shadow(0px -30px 20px rgb(213, 4, 246))
+}
+
 h2{
     margin-bottom: 10px;
     font-size: 90px;
