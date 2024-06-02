@@ -8,33 +8,37 @@ import { RxResume } from "react-icons/rx";
 import 'animate.css';
 
 const PlayerVsAi = () => {
-  const [selectedColumn, setSelectedColumn] = useState(null);
-  const [currentTurnBoxes, setCurrentTurnBoxes] = useState([]);
-  const [removedBoxes, setRemovedBoxes] = useState([]);
-  const [playerRemovedBoxes, setPlayerRemovedBoxes] = useState([]);
-  const [aiRemovedBoxes, setAiRemovedBoxes] = useState([]);
-  const [playerTurn, setPlayerTurn] = useState('player'); // 'player' or 'ai'
-  const [startingPlayer, setStartingPlayer] = useState('player'); // 'player' or 'ai'
-  const [gameOver, setGameOver] = useState(false);
-  const [loser, setLoser] = useState('');
-  const [playerScore, setPlayerScore] = useState(0);
-  const [aiScore, setAiScore] = useState(0);
+  // State variables to manage the game state
+  const [selectedColumn, setSelectedColumn] = useState(null); // Currently selected column by the player
+  const [currentTurnBoxes, setCurrentTurnBoxes] = useState([]); // Boxes selected in the current turn
+  const [removedBoxes, setRemovedBoxes] = useState([]); // Boxes that have been removed from the board
+  const [playerRemovedBoxes, setPlayerRemovedBoxes] = useState([]); // Boxes removed by the player
+  const [aiRemovedBoxes, setAiRemovedBoxes] = useState([]); // Boxes removed by the AI
+  const [playerTurn, setPlayerTurn] = useState('player'); // Current turn indicator ('player' or 'ai')
+  const [startingPlayer, setStartingPlayer] = useState('player'); // Indicates who starts the game
+  const [gameOver, setGameOver] = useState(false); // Indicates if the game is over
+  const [loser, setLoser] = useState(''); // Stores the loser of the game
+  const [playerScore, setPlayerScore] = useState(0); // Player's score
+  const [aiScore, setAiScore] = useState(0); // AI's score
 
+  // Columns configuration with predefined boxes
   const columns = {
     column1: ['t', 'n', 'l'],
     column2: ['t', 't', 'tl', 't', 't'],
     column3: ['t', 'n', 'l', 'l', 'l', 'l', 'l'],
   };
 
+  // Handles the event when a box is clicked by the player
   const handleBoxClick = (column, index) => {
     if (selectedColumn === null || selectedColumn === column) {
-      setSelectedColumn(column);
+      setSelectedColumn(column); // Set the selected column if it's not set or matches the current column
       if (!currentTurnBoxes.includes(`${column}-${index}`)) {
-        setCurrentTurnBoxes(prev => [...prev, `${column}-${index}`]);
+        setCurrentTurnBoxes(prev => [...prev, `${column}-${index}`]); // Add the box to the current turn selection
       }
     }
   };
 
+  // Handles the event when the "Grab" button is clicked
   const handleGrabClick = () => {
     const newRemovedBoxes = [...removedBoxes, ...currentTurnBoxes];
     const newPlayerRemovedBoxes = playerTurn === 'player' 
@@ -43,13 +47,14 @@ const PlayerVsAi = () => {
     const newAiRemovedBoxes = playerTurn === 'ai' 
       ? [...aiRemovedBoxes, ...currentTurnBoxes] 
       : aiRemovedBoxes;
-    
+
     setRemovedBoxes(newRemovedBoxes);
     setPlayerRemovedBoxes(newPlayerRemovedBoxes);
     setAiRemovedBoxes(newAiRemovedBoxes);
     setCurrentTurnBoxes([]);
     setSelectedColumn(null);
 
+    // Check if the game is over (all boxes removed)
     if (Object.keys(columns).every(column => 
       columns[column].every((_, index) => newRemovedBoxes.includes(`${column}-${index}`)))) {
       setGameOver(true);
@@ -60,10 +65,11 @@ const PlayerVsAi = () => {
         setPlayerScore(prev => prev + 1); // Increment player score if AI loses
       }
     } else {
-      setPlayerTurn(playerTurn === 'player' ? 'ai' : 'player');
+      setPlayerTurn(playerTurn === 'player' ? 'ai' : 'player'); // Switch turn
     }
   };
 
+  // AI move logic
   const aiMove = () => {
     const availableColumns = Object.keys(columns).filter(column => 
       columns[column].some((_, index) => !removedBoxes.includes(`${column}-${index}`)));
@@ -94,24 +100,27 @@ const PlayerVsAi = () => {
         setCurrentTurnBoxes([]);
         setSelectedColumn(null);
 
+        // Check if the game is over (all boxes removed)
         if (Object.keys(columns).every(column => 
           columns[column].every((_, index) => newRemovedBoxes.includes(`${column}-${index}`)))) {
           setGameOver(true);
           setLoser('ai');
           setPlayerScore(prev => prev + 1); // Increment player score if AI loses
         } else {
-          setPlayerTurn('player');
+          setPlayerTurn('player'); // Switch turn back to player
         }
       }, 500); // AI grabs after a short delay
     }
   };
 
+  // Effect to handle AI's turn
   useEffect(() => {
     if (playerTurn === 'ai' && !gameOver) {
       aiMove();
     }
   }, [playerTurn, gameOver]);
 
+  // Restart the game
   const restartGame = (resetScores = false) => {
     setSelectedColumn(null);
     setCurrentTurnBoxes([]);
