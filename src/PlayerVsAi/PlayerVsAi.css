@@ -269,4 +269,11 @@ p {
         
     }
 }
+
+@media screen and (max-width: 1060px) {
+    .playerAi-container {
+        overflow-x: hidden;
+        overflow-y: hidden;
+    }
+}
   
